@@ -1,0 +1,70 @@
+<?php require('template/header.phtml'); ?>
+<?= $view->message ?>
+<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+    <!-- Recipient Input -->
+    <div class="form-group">
+        <label for="recipient">Recipient</label>
+        <input type="text" class="form-control" name="recipient" id="recipient" value="<?= htmlspecialchars($recipient) ?>" >
+    </div>
+
+    <!-- Address Line 1 Input -->
+    <div class="form-group">
+        <label for="address1">Address line 1</label>
+        <input type="text" class="form-control" name="address1" id="address1" value="<?= htmlspecialchars($address1) ?>">
+    </div>
+
+    <!-- Address Line 2 Input -->
+    <div class="form-group">
+        <label for="address2">Address line 2</label>
+        <input type="text" class="form-control" name="address2" id="address2" value="<?= htmlspecialchars($address2) ?>">
+    </div>
+
+    <!-- Postcode Input -->
+    <div class="form-group">
+        <label for="postcode">Postcode</label>
+        <input type="text" class="form-control" name="postcode" id="postcode" value="<?= $postcode ?>">
+    </div>
+
+    <!-- Latitude Input -->
+    <div class="form-group">
+        <label for="lat">Latitude</label>
+        <input type="text" class="form-control" name="lat" id="lat" value="<?= htmlspecialchars($lat) ?>">
+    </div>
+
+    <!-- Longitude Input -->
+    <div class="form-group">
+        <label for="long">Longitude</label>
+        <input type="text" class="form-control" name="long" id="long" value="<?= htmlspecialchars($long) ?>">
+    </div>
+
+    <!-- Deliverer Input -->
+    <div class="form-group">
+        <label for="deliverer">Deliverer</label>
+        <select name="deliverer" class="form-control">
+            <option value="0">Choose a deliverer</option>
+            <?php foreach ($view->userDataSet as $userData): ?>
+                <option value="<?= $userData->getUserID() ?>"><?= $userData->getRealName() ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+    <!-- Status Input -->
+    <div class="form-group">
+        <label for="status">Status</label>
+        <select name="status" class="form-control">
+            <option value="0">Choose a status</option>
+            <?php foreach ($view->statusOptions as $statusOption): ?>
+                <option value="">
+                    <?= $statusOption['status_text'] ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+    <br>
+
+    <!-- Submit Button -->
+    <input class="btn btn-primary" name="submit" type="submit" value="Submit">
+
+    <!-- Return Button -->
+    <a href="dashboard.php" class="btn btn-outline-secondary">Return</a>

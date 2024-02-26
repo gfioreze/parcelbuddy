@@ -1,0 +1,28 @@
+<?php require_once('Views/template/header.phtml'); ?>
+
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <!-- Table Header -->
+        <th>ID</th>
+        <th>Recipient Name</th>
+        <th>Recipient Address</th>
+        <th>Delivered by</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($view->deliveryPointDataSet as $deliveryPointData) : ?>
+        <!-- Table Rows -->
+        <tr>
+            <td><?= $deliveryPointData->getDeliveryID() ?></td>
+            <td><?= $deliveryPointData->getName() ?></td>
+            <td><?= $deliveryPointData->getAddress1() ?></td>
+            <td><?= $deliveryPointData->getDeliverer() ?></td>
+            <td><?= $deliveryPointData->getStatus() ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php require_once('Views/template/footer.phtml') ?>

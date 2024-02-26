@@ -1,0 +1,52 @@
+<?php require_once('Views/template/header.phtml'); ?>
+
+<!-- Link to Register new user -->
+<p><a href="register.php">Register new user</a></p>
+
+<!-- Table displaying delivery point data -->
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <!-- Table Header -->
+        <th>ID</th>
+        <th>Recipient Name</th>
+        <th>Recipient Address</th>
+        <th>Delivered by</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Empty row for inserting a new record -->
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><a href="insert.php">Insert record</a></td>
+    </tr>
+    <!-- Iterate through deliveryPointDataSet and display data -->
+    <?php foreach ($view->deliveryPointDataSet as $deliveryPointData): ?>
+        <?php
+        $editUrl = 'edit.php?id=' . $deliveryPointData->getDeliveryID();
+        $deleteUrl = 'delete.php?id=' . $deliveryPointData->getDeliveryID();
+        ?>
+        <!-- Table Rows -->
+        <tr>
+            <td><?= $deliveryPointData->getDeliveryID() ?></td>
+            <td><?= $deliveryPointData->getName() ?></td>
+            <td><?= $deliveryPointData->getAddress1() ?></td>
+            <td><?= $deliveryPointData->getDeliverer() ?></td>
+            <td><?= $deliveryPointData->getStatus() ?></td>
+            <!-- Edit and Delete actions -->
+            <td>
+                <a href="<?= $editUrl ?>" class="btn btn-sm btn-success">Edit</a>
+                <a href="<?= $deleteUrl ?>" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+
+<?php require_once('Views/template/footer.phtml') ?>

@@ -1,0 +1,35 @@
+<?php require('template/header.phtml'); ?>
+
+<?= $view->message ?> <!-- Display any messages from the controller -->
+
+<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+    <!-- Full Name Input -->
+    <div class="form-group">
+        <label for="full_name">Full name</label>
+        <input type="text" class="form-control" name="full_name" id="full_name" value="">
+    </div>
+
+    <!-- User Name Input -->
+    <div class="form-group">
+        <label for="username">User name</label>
+        <input type="text" class="form-control" name="username" id="username" value="">
+    </div>
+
+    <!-- Email Input -->
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" name="email" id="email" value="">
+    </div>
+
+    <!-- Password Input -->
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" name="password" id="password">
+    </div><br>
+
+    <!-- Submit Button -->
+    <input type="submit" name="submit" class="btn btn-primary" value="Register">
+
+    <!-- Return Link -->
+    <a href="dashboard.php" class="btn btn-outline-secondary">Return</a>
+</form>

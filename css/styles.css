@@ -1,0 +1,32 @@
+#container {
+    padding: 3rem 8rem 3rem;
+    min-height: 100vh;
+}
+
+#title {
+    padding: 0 0 1.5rem;
+    background-color: #fff;
+    color: #000;
+}
+
+#content {
+    background-color: #fff;
+    border-top: solid 6px #d9d9d9;
+    padding: 2rem 0 0 0;
+}
+
+#footer {
+    /*margin_top: 20px;
+    text-align: center;
+    background-color: #000;
+    color: #fff; */
+}
+
+.logo {
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.form-group {
+    padding: 0.5rem 0;
+}
