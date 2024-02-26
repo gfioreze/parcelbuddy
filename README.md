@@ -1,5 +1,6 @@
 # Parcel buddy
 
+
 ## Description
 Parcel buddy is a Parcel Management System developed as an assessment
 for the Client Server Systems module in university.
@@ -7,6 +8,7 @@ It is a CRUD system where you can add, read, update and delete
 information about delivery parcels. 
 The application follows the MVC architecture and was build using HTML,
 PHP, MySQL and JavaScript.
+
 
 ## Instructions
 - Clone the repository;
