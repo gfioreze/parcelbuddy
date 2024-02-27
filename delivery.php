@@ -20,7 +20,8 @@ if (isset ($_GET['searchBtn'])) {
 // Check if the user is not logged in
 if (!isset($_SESSION['login'])) {
     // Include the login.php file for authentication
-    require_once('login.php');
+    header('Location: login.php');
+    exit(); // Stop further execution
 }
 
 // Include the HTML view file for the parcels page
