@@ -21,7 +21,12 @@
                     <a class="nav-link" aria-current="page" href="dashboard.php">Dashboard</a>
                 </li>
             </ul>
+<<<<<<< HEAD
             <form class="d-flex" action="" role="search">
+=======
+            // Use action
+            <form class="d-flex" action="<?php echo $_SERVER['PHP_SELF']; ?>" role="search">
+>>>>>>> search-bug
                 <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
                 <button class="btn btn-outline-success me-2" name="searchBtn" type="submit">Search</button>
             </form>
