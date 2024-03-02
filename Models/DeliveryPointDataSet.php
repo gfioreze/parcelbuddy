@@ -55,7 +55,7 @@ class DeliveryPointDataSet
     // Fetches the columns id and the status from the table delivery_status
     public function getDeliveryStatus()
     {
-        $sqlQuery = 'SELECT id ,status_text FROM delivery_status'; // SQL query to retrieve a single delivery point
+        $sqlQuery = 'SELECT status_text FROM delivery_status'; // SQL query to retrieve a single delivery point
         $statement = $this->_dbHandle->prepare($sqlQuery); // Prepare a PDO statement
         $statement->execute(); // Execute the PDO statement
         return $statement->fetchAll(PDO::FETCH_ASSOC);
