@@ -7,6 +7,13 @@ $view = new stdClass();
 $view->pageTitle = 'Register';
 $view->message = '';
 
+// Check if the user is not logged in or is not an admin (usertype 2)
+if (!isset($_SESSION['login']) || $_SESSION['usertype'] === 2) {
+    // Redirect to the login page
+    header('Location: login.php');
+    exit(); // Stop further execution
+}
+
 if (isset($_POST['submit'])) {
     $ok = true;
 
