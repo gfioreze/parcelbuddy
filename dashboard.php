@@ -9,6 +9,7 @@ $view->message = '';
 
 // Instance of DeliveryPointDataSet class
 $deliveryPointDataSet = new DeliveryPointDataSet();
+$view->deliveryPointStatus = $deliveryPointDataSet->getDeliveryStatus();
 
 // Display all or only searched values
 if (isset ($_GET['searchBtn'])) {
