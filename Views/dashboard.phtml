@@ -40,9 +40,10 @@
         <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-8">
                 <div class="card-body">
-                    <p class="card-text mb-2"><strong>Name: </strong><?= $deliveryPointData->getName() ?></p>
-                    <p class="card-text mb-0"><strong>Address: </strong><?= $deliveryPointData->getAddress1() ?> - <?= $deliveryPointData->getPostcode() ?></p>
+                    <p class="mb-2"><strong>Name: </strong><?= $deliveryPointData->getName() ?></p>
+                    <p class="mb-0"><strong>Address: </strong><?= $deliveryPointData->getAddress1() ?> - <?= $deliveryPointData->getPostcode() ?></p>
                     <p class="mb-2">(<i><?= $deliveryPointData->getLat(); ?></i>, <i><?= $deliveryPointData->getLong(); ?>)</i></p>
+                    <p class="mb-2"><strong>Courier: </strong><?= $deliveryPointData->getDeliverer() ?></p>
                     <select>
                         <?php foreach ($view->deliveryPointStatus as $status) : ?>
                         <option>
