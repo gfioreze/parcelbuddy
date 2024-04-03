@@ -10,5 +10,6 @@ $deliveryPoints = $deliveryPointDataSet->getDeliveryPointInfo();
 
 // Output JSON format
 header('Content-type: application/json');
-echo json_encode($deliveryPoints);
+$jsonDeliveryPoints = json_encode($deliveryPoints);
+echo $jsonDeliveryPoints;
 exit();
