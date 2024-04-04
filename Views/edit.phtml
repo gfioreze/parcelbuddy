@@ -43,7 +43,9 @@
         <select name="deliverer" class="form-control">
             <option value="0">Choose a deliverer</option>
             <?php foreach ($view->userDataSet as $userData): ?>
-                <option value="<?= $userData->getUserID() ?>"><?= $userData->getRealName() ?></option>
+                <option value="<?= $userData->getUserID() ?>">
+                    <?= $userData->getRealName() ?>
+                </option>
             <?php endforeach; ?>
         </select>
     </div>

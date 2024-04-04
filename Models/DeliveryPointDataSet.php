@@ -51,7 +51,7 @@ class DeliveryPointDataSet
     }
 
     // Fetches a delivery point corresponding to a client's name searched
-    public function getDeliveryPointByName($searchTerm)
+    public function getDeliveryPointBySearch($searchTerm)
     {
         $sqlQuery = 'SELECT delivery_point.id, delivery_point.name, delivery_point.address_1, delivery_point.address_2, delivery_point.postcode, delivery_users.realname, delivery_point.lat, delivery_point.long, delivery_status.status_text, delivery_point.del_photo
         FROM delivery_point

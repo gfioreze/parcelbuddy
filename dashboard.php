@@ -13,7 +13,15 @@ $view->deliveryPointStatus = $deliveryPointDataSet->getDeliveryStatus();
 
 // Pagination
 $itemsPerPage = 10;
-$totalItems = count($deliveryPointDataSet->getDeliveryPointInfo());
+
+// Determine the total number of items based on the search results if a search is performed
+if (isset($_GET['searchBtn'])) {
+    $searchTerm = $_GET['search'];
+    $totalItems = count($deliveryPointDataSet->getDeliveryPointBySearch($searchTerm));
+} else {
+    $totalItems = count($deliveryPointDataSet->getDeliveryPointInfo());
+}
+
 $totalPages = ceil($totalItems / $itemsPerPage);
 
 $pageNumber = isset($_GET['page']) ? $_GET['page'] : 1;
@@ -23,11 +31,10 @@ $view->totalPages = $totalPages;
 $view->pageNumber = $pageNumber;
 
 // Display all or only searched values
-if (isset ($_GET['searchBtn'])) {
+if (isset($_GET['searchBtn'])) {
     $searchTerm = $_GET['search'];
-    $view->deliveryPointDataSet = $deliveryPointDataSet->getDeliveryPointByName($searchTerm);
+    $view->deliveryPointDataSet = $deliveryPointDataSet->getDeliveryPointBySearch($searchTerm);
 } else {
-    //$view->deliveryPointDataSet = $deliveryPointDataSet->getDeliveryPointInfo();
     $view->deliveryPointDataSet = $deliveryPointDataSet->getPagedDeliveryPointInfo($pageNumber, $itemsPerPage);
 }
 
