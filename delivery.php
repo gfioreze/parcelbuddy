@@ -10,12 +10,24 @@ $view->pageTitle = 'Parcels';
 $deliveryPointDataSet = new DeliveryPointDataSet();
 $view->deliveryPointStatus = $deliveryPointDataSet->getDeliveryStatus();
 
+// Pagination
+$itemsPerPage = 10;
+$totalItems = count($deliveryPointDataSet->getDeliveryPointInfo());
+$totalPages = ceil($totalItems / $itemsPerPage);
+
+$pageNumber = isset($_GET['page']) ? $_GET['page'] : 1;
+$pageNumber = max(1, min($pageNumber, $totalPages));
+
+$view->totalPages = $totalPages;
+$view->pageNumber = $pageNumber;
+
 // Display all or only searched values
 if (isset ($_GET['searchBtn'])) {
     $searchTerm = $_GET['search'];
     $view->deliveryPointDataSet = $deliveryPointDataSet->getDeliveryPointByName($searchTerm);
 } else {
-    $view->deliveryPointDataSet = $deliveryPointDataSet->getDeliveryPointInfo();
+    //$view->deliveryPointDataSet = $deliveryPointDataSet->getDeliveryPointInfo();
+    $view->deliveryPointDataSet = $deliveryPointDataSet->getPagedDeliveryPointInfo($pageNumber, $itemsPerPage);
 }
 
 // Check if the user is not logged in

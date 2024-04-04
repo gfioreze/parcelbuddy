@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", function() {
     qrElements.forEach(function(qrElement) {
 
         const deliveryID = qrElement.id;
-
         const qrText = "Parcel ID: " + deliveryID;
+
         new QRCode(qrElement, {
             text: qrText,
             width: 128,
