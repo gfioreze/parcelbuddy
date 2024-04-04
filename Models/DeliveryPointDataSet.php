@@ -32,18 +32,16 @@ class DeliveryPointDataSet
 
     public function getPagedDeliveryPointInfo($pageNumber, $itemsPerPage)
     {
-        // Calculate the offset based on the page number and items per page
         $offset = ($pageNumber - 1) * $itemsPerPage;
 
-        // SQL query to fetch a subset of delivery points with pagination
         $sqlQuery = 'SELECT delivery_point.id, delivery_point.name, delivery_point.address_1, delivery_point.address_2, delivery_point.postcode, delivery_users.realname, delivery_point.lat, delivery_point.long, delivery_status.status_text, delivery_point.del_photo
                 FROM delivery_point
                 LEFT JOIN delivery_users ON delivery_point.deliverer = delivery_users.userid
                 LEFT JOIN delivery_status ON delivery_point.status = delivery_status.id
-                LIMIT :offset, :itemsPerPage'; // Add LIMIT clause for pagination
-        $statement = $this->_dbHandle->prepare($sqlQuery); // Prepare a PDO statement
-        $statement->bindParam(':offset', $offset, PDO::PARAM_INT);
-        $statement->bindParam(':itemsPerPage', $itemsPerPage, PDO::PARAM_INT);
+                LIMIT ?, ?';
+        $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(1, $offset, PDO::PARAM_INT);
+        $statement->bindParam(2, $itemsPerPage, PDO::PARAM_INT);
         $statement->execute(); // Execute the PDO statement
         $deliveryPointInfo = [];
         while ($row = $statement->fetch()) {
