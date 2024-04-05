@@ -1,4 +1,3 @@
-
 -- Table structure for table `delivery_point`
 
 create table delivery_point

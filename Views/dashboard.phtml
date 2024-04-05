@@ -44,13 +44,7 @@
                     <p class="mb-0"><strong>Address: </strong><?= $deliveryPointData->getAddress1() ?> - <?= $deliveryPointData->getPostcode() ?></p>
                     <p class="mb-2">(<i><?= $deliveryPointData->getLat(); ?></i>, <i><?= $deliveryPointData->getLong(); ?>)</i></p>
                     <p class="mb-2"><strong>Courier: </strong><?= $deliveryPointData->getDeliverer() ?></p>
-                    <select>
-                        <?php foreach ($view->deliveryPointStatus as $status) : ?>
-                        <option>
-                            <?= $status['status_text'] ?>
-                            <?php endforeach; ?>
-                        </option>
-                    </select>
+                    <p class="mb-2"><strong>Status: </strong><?= $deliveryPointData->getStatus() ?></p>
                 </div>
             </div>
             <div class=" col-sm-6 col-md-6 col-lg-4 d-flex align-items-center">
