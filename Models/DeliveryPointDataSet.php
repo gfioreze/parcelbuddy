@@ -75,11 +75,12 @@ class DeliveryPointDataSet
     // Fetches the columns id and the status from the table delivery_status
     public function getDeliveryStatus()
     {
-        $sqlQuery = 'SELECT status_text FROM delivery_status'; // SQL query to retrieve a single delivery point
+        $sqlQuery = 'SELECT status_text FROM delivery_status';
         $statement = $this->_dbHandle->prepare($sqlQuery); // Prepare a PDO statement
         $statement->execute(); // Execute the PDO statement
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     // Fetches information about a single delivery point based on its ID
     public function getSingleDeliveryPoint($deliveryID)
@@ -121,11 +122,11 @@ class DeliveryPointDataSet
             $statement->bindParam(2, $address1);
             $statement->bindParam(3, $address2);
             $statement->bindParam(4, $postcode);
-            $statement->bindParam(5, $deliverer);
-            $statement->bindParam(6, $lat);
-            $statement->bindParam(7, $long);
-            $statement->bindParam(8, $status);
-            $statement->bindParam(9, $id);
+            $statement->bindParam(5, $deliverer, PDO::PARAM_INT);
+            $statement->bindParam(6, $lat, PDO::PARAM_INT);
+            $statement->bindParam(7, $long, PDO::PARAM_INT);
+            $statement->bindParam(8, $status, PDO::PARAM_INT);
+            $statement->bindParam(9, $id, PDO::PARAM_INT);
             $statement->execute();
             return $statement->rowCount(); // Return the number of affected rows
         } catch (PDOException $e) {

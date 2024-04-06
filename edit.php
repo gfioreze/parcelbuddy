@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
     $deliveryData = new DeliveryPointDataSet();
 
     // Update the delivery point using the provided data
-    $addDeliveryPoint = $deliveryData->updateDeliveryPoint($id, $recipient, $address1, $address2, $postcode, $deliverer, $lat, $long, $status);
+    $addDeliveryPoint = $deliveryData->updateDeliveryPoint($recipient, $address1, $address2, $postcode, $deliverer, $lat, $long, $status, $id);
 
     // Check if any rows were affected
     if ($addDeliveryPoint > 0) {
