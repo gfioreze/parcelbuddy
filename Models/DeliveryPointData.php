@@ -22,7 +22,6 @@ class DeliveryPointData implements JsonSerializable
 
     public function jsonSerialize(): mixed
     {
-        // TODO: Implement jsonSerialize() method.
         return [
             'deliveryID' => $this->deliveryID,
             'name' => $this->name,
