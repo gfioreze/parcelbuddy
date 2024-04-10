@@ -67,7 +67,7 @@ class DeliveryPointDataSet
         $statement->execute(); // Execute the PDO statement
         $deliveryPointInfo = [];
         while ($row = $statement->fetch()) {
-            $deliveryPointInfo[] = new DeliveryPointData($row); // Create DeliveryPointData objects and add them to the array
+            $deliveryPointInfo[] = new DeliveryPointData($row);
         }
         return $deliveryPointInfo;
     }
@@ -81,15 +81,19 @@ class DeliveryPointDataSet
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     // Fetches information about a single delivery point based on its ID
-    public function getSingleDeliveryPoint($deliveryID)
+    public function getSingleDeliveryPoint($parcelID)
     {
-        $sqlQuery = 'SELECT * FROM delivery_point WHERE id = ?'; // SQL query to retrieve a single delivery point
+        $sqlQuery = 'SELECT delivery_point.id, delivery_point.name, delivery_point.address_1, delivery_point.address_2, delivery_point.postcode, delivery_users.realname, delivery_point.lat, delivery_point.long, delivery_status.status_text, delivery_point.del_photo
+        FROM delivery_point
+         LEFT JOIN delivery_users ON delivery_point.deliverer = delivery_users.userid
+         LEFT JOIN delivery_status ON delivery_point.status = delivery_status.id 
+        WHERE delivery_point.id = ?'; // SQL query to retrieve a single delivery point
         $statement = $this->_dbHandle->prepare($sqlQuery); // Prepare a PDO statement
-        $statement->bindParam(1, $deliveryID); // Bind the deliveryID parameter
+        $statement->bindParam(1, $parcelID); // Bind the deliveryID parameter
         $statement->execute(); // Execute the PDO statement
-        return $statement->fetch(PDO::FETCH_ASSOC); // Fetch a single row as an associative array
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        return new DeliveryPointData($row);
     }
 
     // Adds a new delivery point to the database
