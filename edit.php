@@ -22,15 +22,17 @@ if (isset($_GET['id'])) {
     // Fetch the current data values for the specified delivery point
     $deliveryPointInfo = $deliveryPointData->getSingleDeliveryPoint($id);
     if ($deliveryPointInfo) {
-        // Populate variables with retrieved values
-        $recipient = $deliveryPointInfo['name'];
-        $address1 = $deliveryPointInfo['address_1'];
-        $address2 = $deliveryPointInfo['address_2'];
-        $postcode = $deliveryPointInfo['postcode'];
-        $lat = $deliveryPointInfo['lat'];
-        $long = $deliveryPointInfo['long'];
-        $deliverer = $deliveryPointInfo['deliverer'];
-        $status = $deliveryPointInfo['status'];
+        $deliveryPointInfo = $deliveryPointData->getSingleDeliveryPoint($id);
+        if ($deliveryPointInfo) {
+            $recipient = $deliveryPointInfo->getName();
+            $address1 = $deliveryPointInfo->getAddress1();
+            $address2 = $deliveryPointInfo->getAddress2();
+            $postcode = $deliveryPointInfo->getPostcode();
+            $lat = $deliveryPointInfo->getLat();
+            $long = $deliveryPointInfo->getLong();
+            $deliverer = $deliveryPointInfo->getDeliverer();
+            $status = $deliveryPointInfo->getStatus();
+        }
     }
 }
 
@@ -50,10 +52,10 @@ if (isset($_POST['submit'])) {
     $deliveryData = new DeliveryPointDataSet();
 
     // Update the delivery point using the provided data
-    $addDeliveryPoint = $deliveryData->updateDeliveryPoint($recipient, $address1, $address2, $postcode, $deliverer, $lat, $long, $status, $id);
+    $updateDeliveryPoint = $deliveryData->updateDeliveryPoint($recipient, $address1, $address2, $postcode, $deliverer, $lat, $long, $status, $id);
 
     // Check if any rows were affected
-    if ($addDeliveryPoint > 0) {
+    if ($updateDeliveryPoint > 0) {
         $view->message = '<p class="text-success">' . 'Delivery point updated successfully' . '</p>';
     } else {
         $view->message = '<p class="text-danger">' . 'No rows affected' . '</p>';

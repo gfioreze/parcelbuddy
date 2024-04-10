@@ -4,11 +4,12 @@
     <?php
     $editUrl = 'edit.php?id=' . $deliveryPointData->getDeliveryID();
     $deleteUrl = 'delete.php?id=' . $deliveryPointData->getDeliveryID();
+    $parcelUrl = 'parcel.php?id=' . $deliveryPointData->getDeliveryID();
     ?>
     <div class="card mb-5">
         <div class="card-header d-flex">
             <div class="col-6 col-sm-8 col-md-10 col-lg-10">
-                <h5 class="mb-0"> Parcel ID: <?= $deliveryPointData->getDeliveryID() ?></h5>
+                <h5 class="mb-0"><a href='<?= $parcelUrl ?>'> Parcel ID: <?= $deliveryPointData->getDeliveryID() ?></a></h5>
             </div>
             <div class="d-flex justify-content-end col-6 col-sm-4 col-md-2 col-lg-2">
                 <div class="px-1">

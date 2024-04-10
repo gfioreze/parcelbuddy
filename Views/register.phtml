@@ -1,6 +1,6 @@
 <?php require('template/header.phtml'); ?>
 
-<?= $view->message ?> <!-- Display any messages from the controller -->
+<?= $view->message ?>
 
 <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
     <!-- Full Name Input -->
@@ -25,8 +25,9 @@
     <div class="form-group">
         <label for="password">Password</label>
         <input type="password" class="form-control" name="password" id="password">
-    </div><br>
+    </div>
 
+    <br>
     <!-- Submit Button -->
     <input type="submit" name="submit" class="btn btn-primary" value="Register">
 
