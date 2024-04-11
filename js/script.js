@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
         new QRCode(qrElement, {
             text: qrText,
-            width: 128,
-            height: 128,
+            width: 168,
+            height: 168,
             correctLevel: QRCode.CorrectLevel.H
         });
     });
