@@ -45,7 +45,6 @@ function displaySearchResults(results) {
             searchResultsContainer.style.height = '244px';
             searchResultsContainer.style.top = '100%';
             searchResultsContainer.style.width = '344px';
-
             searchResultsContainer.style.left = '50%';
             searchResultsContainer.style.transform = 'translateX(-50%)';
 

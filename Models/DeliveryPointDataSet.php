@@ -75,7 +75,7 @@ class DeliveryPointDataSet
     // Fetches the columns id and the status from the table delivery_status
     public function getDeliveryStatus()
     {
-        $sqlQuery = 'SELECT status_text FROM delivery_status';
+        $sqlQuery = 'SELECT status_code, status_text FROM delivery_status';
         $statement = $this->_dbHandle->prepare($sqlQuery); // Prepare a PDO statement
         $statement->execute(); // Execute the PDO statement
         return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -120,17 +120,20 @@ class DeliveryPointDataSet
         try {
             $sqlQuery = 'UPDATE delivery_point 
                         SET name = ?, address_1 = ?, address_2 = ?, postcode = ?, deliverer = ?, lat = ?, `long` = ?, status = ?
-                      WHERE id = ?'; // SQL query to update a delivery point
+                      WHERE id = ?';
+            /*echo "SQL Query: $sqlQuery \n";
+            echo "Parameters: $recipient, $address1, $address2, $postcode, $deliverer, $lat, $long, $status, $id\n";*/
+
             $statement = $this->_dbHandle->prepare($sqlQuery);
             $statement->bindParam(1, $recipient);
             $statement->bindParam(2, $address1);
             $statement->bindParam(3, $address2);
             $statement->bindParam(4, $postcode);
-            $statement->bindParam(5, $deliverer, PDO::PARAM_INT);
-            $statement->bindParam(6, $lat, PDO::PARAM_INT);
-            $statement->bindParam(7, $long, PDO::PARAM_INT);
-            $statement->bindParam(8, $status, PDO::PARAM_INT);
-            $statement->bindParam(9, $id, PDO::PARAM_INT);
+            $statement->bindParam(5, $deliverer);
+            $statement->bindParam(6, $lat);
+            $statement->bindParam(7, $long);
+            $statement->bindParam(8, $status);
+            $statement->bindParam(9, $id);
             $statement->execute();
             return $statement->rowCount(); // Return the number of affected rows
         } catch (PDOException $e) {

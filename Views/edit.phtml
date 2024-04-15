@@ -1,6 +1,7 @@
 <?php require('template/header.phtml'); ?>
 <?= $view->message ?>
-<form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+
+<form action="<?= $_SERVER['PHP_SELF'] ?>?id=<?= $_GET['id']?>" method="post">
     <!-- Recipient Input -->
     <div class="form-group">
         <label for="recipient">Recipient</label>
@@ -56,7 +57,7 @@
         <select name="status" class="form-control">
             <option value="0">Choose a status</option>
             <?php foreach ($view->statusOptions as $statusOption): ?>
-                <option value="">
+                <option value="<?= $statusOption['status_code'] ?>">
                     <?= $statusOption['status_text'] ?>
                 </option>
             <?php endforeach; ?>

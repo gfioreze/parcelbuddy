@@ -39,6 +39,7 @@ if (isset($_GET['id'])) {
 // Check if the form is submitted
 if (isset($_POST['submit'])) {
     // Retrieve form data
+    $id = $_GET['id'];
     $recipient = $_POST['recipient'];
     $address1 = $_POST['address1'];
     $address2 = $_POST['address2'];
