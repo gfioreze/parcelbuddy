@@ -1,11 +1,16 @@
 <?php require_once('Views/template/header.phtml'); ?>
 
+<div id="map" class="col-xs-12 col-sm-12 col-md-12 lg-12 mb-5" style="height: 350px"></div>
+
 <?php foreach ($view->deliveryPointDataSet as $deliveryPointData) : ?>
     <?php
     $editUrl = 'edit.php?id=' . $deliveryPointData->getDeliveryID();
     $deleteUrl = 'delete.php?id=' . $deliveryPointData->getDeliveryID();
     $parcelUrl = 'parcel.php?id=' . $deliveryPointData->getDeliveryID();
+    $popUpAddress = '\'<div class="card1"><address>' . $deliveryPointData->getAddress1() . '</address></div>\'';
+
     ?>
+
     <div class="card mb-5">
         <div class="card-header d-flex">
             <div class="col-6 col-sm-8 col-md-10 col-lg-10">
