@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
 
+    // localhost
     const baseUrl = window.location.origin + "/css/parcelbuddy/";
+    // production
+    //const baseUrl = window.location.origin + "/clientserver/";
     const qrElements = document.querySelectorAll('.qr-code');
 
     qrElements.forEach(function(qrElement) {
@@ -60,13 +63,15 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             data.forEach(item => {
-                const { lat, long } = item;
+                const { deliveryID, address1, address2, lat, long, postcode } = item;
                 //console.log(lat, long);
-                L.marker([lat, long]).addTo(map);
+                let marker = L.marker([lat, long]).addTo(map);
+                marker.bindPopup(`<b>Parcel ID: </b>${ deliveryID }<br><b>Address:</b> ${ address1 } - <br> ${ address2 } <br><b>Postcode:</b> ${ postcode }`).openPopup();
+                const qrElement = document.createElement('div');
+                qrElement.id = deliveryID;
             });
         })
         .catch(error => {
             console.error('Error fetching data:', error);
         });
-
 });
