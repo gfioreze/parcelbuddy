@@ -1,4 +1,8 @@
 <?php
+/*This class manages interaction with the database for user-related operations.
+It provides methods for adding new users, retrieving user data, and fetching all deliverers*/
+
+
 require_once('Models/Database.php');
 require('Models/UserData.php');
 

@@ -1,7 +1,14 @@
 <?php
+/*
+  The Database class serves as a wrapper for database connection management.
+  By applying a singleton design patter in the getInstance method, the class
+  ensures only one instance of the database connection is created throughout the application.
+  The class provides methods for retrieving the database connection handle and destroying it when no longer needed.
+*/
+
 require_once('config/config.php');
 class Database extends PDO {
-    protected static $_dbInstance = null; // Static variable to hold the single instance of the database connection
+    protected static $_dbInstance = null; // Variable to hold the single instance of the database connection
     protected $_dbHandle; // Instance variable to hold the PDO handle
 
     public function __construct($username, $password, $host, $database) {
@@ -17,7 +24,7 @@ class Database extends PDO {
         $username = DB_USERNAME;
         $password = DB_PASSWORD;
         $host = DB_HOST;
-        $database = DB_DATABASE; // Variable referenced in constructor is $database?
+        $database = DB_DATABASE;
 
         if (self::$_dbInstance === null) { // Checks if the PDO instance exists
             self::$_dbInstance = new self($username, $password, $host, $database); // Creates a new instance if not, sending in connection info

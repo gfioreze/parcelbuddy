@@ -1,7 +1,9 @@
 <?php require_once('Views/template/header.phtml'); ?>
 
+<!--Map container-->
 <div id="map" class="col-xs-12 col-sm-12 col-md-12 lg-12 mb-5" style="height: 350px"></div>
 
+<!--Display delivery parcel data-->
 <?php foreach ($view->deliveryPointDataSet as $deliveryPointData) : ?>
     <?php
     $editUrl = 'edit.php?id=' . $deliveryPointData->getDeliveryID();
@@ -62,6 +64,7 @@
     </div>
 <?php endforeach; ?>
 
+<!--Paging control-->
 <nav aria-label="...">
     <ul class="pagination pagination-md justify-content-center">
         <li class="page-item <?= $view->pageNumber <= 1 ? 'disabled' : '' ?>">

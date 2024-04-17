@@ -14,5 +14,3 @@ if (isset($_SESSION['username']) && ($_SESSION['login'])) {
     // Redirect to the index page after logout
     header('Location: index.php');
 }
-
-require_once('Views/logout.phtml'); // Include the HTML view file

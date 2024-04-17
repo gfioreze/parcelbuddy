@@ -1,4 +1,10 @@
 <?php
+/*
+  The DeliveryPointDataSet class creates methods for interacting with delivery point data in the database.
+  It includes methods for fetching, adding, updating, and deleting delivery point information,
+  as well as retrieving delivery status and performing search operations.
+*/
+
 require_once('Models/Database.php');
 require_once('Models/DeliveryPointData.php');
 

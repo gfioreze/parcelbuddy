@@ -1,4 +1,10 @@
 <?php
+/*
+  The UserData class represents user data retrieved from the database. It encapsulates properties
+  such as userID, userName, password, realName, and userType. This class is used to manipulate
+  and retrieve user information in the application.
+*/
+
 class UserData {
     // Properties to hold user data
     protected $userID, $userName, $password, $realName, $userType;

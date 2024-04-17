@@ -1,4 +1,10 @@
 <?php
+/*
+  The DeliveryPointData class represents a single delivery point entity. It encapsulates delivery point properties
+  such as delivery ID, name, address, postcode, deliverer, latitude, longitude, status, and delivery photo.
+  It implements the JsonSerializable interface allowing instances of the class to be serialized to JSON format,
+  making it suitable for various use cases such as transmitting data over APIs.
+*/
 
 class DeliveryPointData implements JsonSerializable
 {

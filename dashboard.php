@@ -2,7 +2,7 @@
 require_once('Models/DeliveryPointDataSet.php');
 session_start();
 
-// Create a view for the dashboard page
+// Create the view class to hold view properties
 $view = new stdClass();
 $view->pageTitle = 'Dashboard';
 $view->message = '';
@@ -10,10 +10,10 @@ $view->message = '';
 // Instance of DeliveryPointDataSet class
 $deliveryPointDataSet = new DeliveryPointDataSet();
 
-// Pagination
+// Pagination settings
 $itemsPerPage = 10;
 
-// Determine the total number of items based on the search results if a search is performed
+// Count the total number of items based on the search results if a search is performed
 if (isset($_GET['searchBtn'])) {
     $searchTerm = $_GET['search'];
     $totalItems = count($deliveryPointDataSet->getDeliveryPointBySearch($searchTerm));
@@ -21,11 +21,14 @@ if (isset($_GET['searchBtn'])) {
     $totalItems = count($deliveryPointDataSet->getDeliveryPointInfo());
 }
 
+// Calculate amount of pages needed for pagination
 $totalPages = ceil($totalItems / $itemsPerPage);
 
+// Ensure valid page number. Default to 1
 $pageNumber = isset($_GET['page']) ? $_GET['page'] : 1;
 $pageNumber = max(1, min($pageNumber, $totalPages));
 
+// Set view properties for totalPage and pageNumber variables
 $view->totalPages = $totalPages;
 $view->pageNumber = $pageNumber;
 

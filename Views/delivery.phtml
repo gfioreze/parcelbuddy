@@ -1,5 +1,5 @@
 <?php require_once('Views/template/header.phtml'); ?>
-
+    <!--Display delivery parcel data-->
     <?php foreach ($view->deliveryPointDataSet as $deliveryPointData) : ?>
         <div class="card mb-5">
             <div class="card-header">
@@ -24,6 +24,7 @@
         </div>
     <?php endforeach; ?>
 
+<!--Paging control-->
 <nav aria-label="...">
     <ul class="pagination pagination-md justify-content-center">
         <li class="page-item <?= $view->pageNumber <= 1 ? 'disabled' : '' ?>">
