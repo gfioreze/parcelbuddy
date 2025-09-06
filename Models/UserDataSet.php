@@ -29,13 +29,17 @@ class UserDataSet {
     }
 
     // Retrieves the username based on the user ID
-    public function getUserName($userID) {
-        $sqlQuery = 'SELECT realname FROM delivery_users'; // SQL query to retrieve the realname from delivery_users (Incomplete query)
+    public function getUser(string $username): ?UserData {
+        $sqlQuery = 'SELECT * FROM delivery_users WHERE username = ? LIMIT 1';
         $statement = $this->_dbHandle->prepare($sqlQuery);
+        $statement->bindParam(1, $username, PDO::PARAM_STR);
         $statement->execute();
-        $statement->bindParam(1, $userID); // Bind the userID parameter
-        $statement->execute();
-        return $statement->fetch(PDO::FETCH_ASSOC); // Fetch a single row as an associative array
+
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return new UserData($row);
+        }
+        return null;
     }
 
     // Retrieves user data based on the username and password
